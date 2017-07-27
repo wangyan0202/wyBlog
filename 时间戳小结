@@ -1,1 +1,38 @@
 前端时间戳
+
+前端工作经常遇到时间的处理问题，介绍自己遇到的坑
+
+1.得到当前的年与日时分秒
+var date=new Date();
+var year=date.getFullYear();		// 年
+var mouth=date.getMonth()+1;		// 月
+var day=date.getDate();				// 日
+var hour=date.getHours();			// 时
+var min=date.getMinutes();			// 分
+var sec=date.getSeconds();			// 秒
+
+2.得到今天，昨天，前天
+function add0(m){return m<10?'0'+m:m }
+function GetDateStr(AddDayCount) { 
+	var dd = new Date(); 
+	dd.setDate(dd.getDate()+AddDayCount);//获取AddDayCount天后的日期 
+	var y = dd.getFullYear(); 
+	var m = dd.getMonth()+1;//获取当前月份的日期 
+	var d = dd.getDate(); 
+	return y+"-"+add0(m)+"-"+add0(d); 
+}
+
+3.前时间戳
+
+var nowTime = Date.parse(new Date())/1000;
+
+4.将可视时间转化为时间戳
+
+var tenTime = year+'/'+mouth+'/'+day+' '+"10:00:00";	// 今天10点的时间戳
+tenTime = new Date(tenTime).getTime()/1000;
+注：这种转化必须日期是年/月/日 "时:分:秒"
+
+如：var date = "2005-05-03 12:04:07";
+date=date.replace(/-/g,'/');
+date=new Date(timeS).getTime()/1000;
+以这种形式转换才行
