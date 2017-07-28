@@ -71,13 +71,12 @@ module.exports={
 	  "author": "",
 	  "license": "ISC"
 	}
-	
 
 8. npm start 开启热加载
-
-
 9. loader
-	css-loader style-loaer 控制引入css文件使其生效
+	css-loader style-loaer 控制引入css文件使其生效 在js中引入require("style-loader!css-loader!./admin.css");
+	
+	
 	
 	
 
