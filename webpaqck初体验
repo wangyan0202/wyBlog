@@ -19,14 +19,58 @@ webpack 填坑
 </body>
 </html>
 
-其中admin.bundle.js文件在设置了webpack.confid.文件之后会自动生成
+其中admin.bundle.js文件在设置了webpack.confid.js文件之后会自动生成
 
 注意：webpack.confid.js需自己手动创建
 
 建立 admin.js
 document.getElementById("app").innerText="亲爱安安";
 
-4. 基本文件建立完成之后 在文件根目录所在的文件中shift+右键 打开命令窗口 npm install 下载依赖包 
+4. 基本文件建立完成之后 在文件根目录所在的文件中shift+右键 打开命令窗口 
+	1. npm install 下载依赖包
+	2. npm init 初始化，生成 package.json文件
+	
+5. 配置webpack.confid.js
+var path = require('path');	// node.js 自带的路径系统
+
+module.exports={
+	entry:{			// 文件入口
+		admin:'./admin/admin.js',
+		customer:'./customer/customer.js'
+	},
+	output:{
+		path:path.join(__dirname,'dist'), // path.join路径拼接方法 __dirname文件所在根目录
+		filename:'[name].bundle.js',	// name 对应 entry 中的admin/customer
+		publicPath:'/dist/'		// 文件生成目录
+	}
+}
+
+6. 文件配置完成后运行 webpack 命令 即可生成对应的[name].bundle.js
+
+7. webpack的热加载（localhost:8080打开网页热加载才会生效）
+	1. npm i webpack-dev-server -g		// 全局安装
+	2. npm i webpack-dev-server --save-dev // 开发依赖
+	3.在package.json 做如在设置
+	{
+	  "name": "tt",
+	  "version": "1.0.0",
+	  "description": "",
+	  "main": "index.js",
+	  "dependencies": {},
+	  "devDependencies": {
+	    "webpack": "^3.4.1",
+	    "webpack-dev-server": "^2.6.1"
+	  },
+	  "scripts": {
+	   "start": "webpack-dev-server --progress --colors --hot --inline"	// 开启热加载
+	   // "start": "webpack-dev-server --progress --colors --hot --inline --port 3000"	// 默认端口被暂用，另起端口
+	  },
+	  "author": "",
+	  "license": "ISC"
+	}
+	
+	
+
 
 
 
