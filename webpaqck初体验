@@ -1,0 +1,32 @@
+webpack 填坑
+
+1.在学习webpack之前一定要学习一下安装npm 和 node 安装npm方法http://blog.csdn.net/tyro_java/article/details/51232458参照此博客(本人感觉写的很详细)
+
+2. npm ，node 安装之后 用npm i webpack -g 全局安装webpack
+
+3. 创建一个本地项目如：webpackTry
+
+建立web.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>admin</title>
+</head>
+<body>
+	<div id="app"></div>
+	<script src="../dist/admin.bundle.js"></script>
+</body>
+</html>
+
+其中admin.bundle.js文件在设置了webpack.confid.文件之后会自动生成
+
+注意：webpack.confid.js需自己手动创建
+
+建立 admin.js
+document.getElementById("app").innerText="亲爱安安";
+
+4. 基本文件建立完成之后 在文件根目录所在的文件中shift+右键 打开命令窗口 npm install 下载依赖包 
+
+
+
